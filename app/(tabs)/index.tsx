@@ -1,3 +1,4 @@
+import AppCore from '@/src/components/AppCore';
 import { Image } from 'expo-image';
 import { Platform, StyleSheet } from 'react-native';
 
@@ -51,6 +52,8 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
+      <AppCore></AppCore>
+
     </ParallaxScrollView>
   );
 }

@@ -12,13 +12,24 @@ interface GameProps {
 const Game = (props: GameProps) => {
     //target = 10 + Math.floor(Math.random() * 89);
 
-    const [selectedNumbers, setSelectedNumbers] = useState([0, 4]); 
-    
-    const randomNumbers = Array.from({ length: props.randomNumberCount })
-                    .map(() => 1 + Math.floor(Math.random() * 29)); 
-    const target = randomNumbers
+    const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]); 
+    const [randomNumbers, setRandomNumbers] = useState<number[]>(
+        Array.from({ length: props.randomNumberCount })
+                    .map(() => 1 + Math.floor(Math.random() * 29))
+    );
+    // const randomNumbers = Array.from({ length: props.randomNumberCount })
+    //                .map(() => 1 + Math.floor(Math.random() * 29));
+
+    const [target, setTarget] = useState<number>(  
+    randomNumbers
         .slice(0, props.randomNumberCount - 2)
-        .reduce((acc, curr) => acc + curr, 0);
+        .reduce((acc, curr) => acc + curr, 0)
+    );
+
+
+    // const target = randomNumbers
+    //     .slice(0, props.randomNumberCount - 2)
+    //     .reduce((acc, curr) => acc + curr, 0);
     const isNumberSelected = (numberIndex: number) => {
         return selectedNumbers.indexOf(numberIndex) >= 0;
     };  
@@ -84,7 +95,16 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         // marginTop: 20,
     },
-    
+    STATUS_PLAYING: {
+        backgroundColor: '#bbb',
+    },
+    STATUS_WON: {
+        backgroundColor: 'green',
+    },
+    STATUS_LOST: {
+        backgroundColor: 'red',
+    },
 }
+
 
 );

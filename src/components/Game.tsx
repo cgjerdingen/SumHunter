@@ -55,18 +55,19 @@ const Game = (props: GameProps) => {
   return (
 
     <View style={styles.container}>
-        <Text style={styles.target}>{target}</Text>
+        <Text style={[styles.target, styles['STATUS_${status}']]}>{target}</Text>
         <View style={styles.randomContainer}>
         {randomNumbers.map((number, index) => 
             <RandomNumber 
                 key={index} 
                 id={index} 
                 number={number} 
-                isDisabled={isNumberSelected(index)}
+                isDisabled={isNumberSelected(index) || status !== 'playing'}
                 onPress={selectNumber}
             />
         )} 
         </View>
+        <Text>{status}</Text>
     </View>
   );
 }

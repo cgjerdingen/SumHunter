@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 interface RandomNumberProps {
     number: number;
+    isPressed: boolean;
     isDisabled: boolean;
     onPress: (numberIndex: number) => void;
     id: number;
@@ -21,7 +22,7 @@ const RandomNumber = (props: RandomNumberProps) => {
     };  
     return (     
         <TouchableOpacity onPress={handlePress}>   
-                <Text style={[styles.random, props.isDisabled && styles.randomDisabled]}>
+                <Text style={[styles.random, props.isDisabled && styles.randomDisabled, props.isPressed && styles.randomPressed,]}>
                     {props.number}
                 </Text>
         </TouchableOpacity>
@@ -39,7 +40,11 @@ const styles = StyleSheet.create({
         //opacity: 0.3,
     },
     randomDisabled: {
-        backgroundColor: '#f00',
+        backgroundColor: '#ccc',
+        opacity: 0.3,
+    },
+    randomPressed: {
+        backgroundColor: 'cornflowerblue',
         opacity: 0.3,
     },
 });
